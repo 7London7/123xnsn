@@ -1,0 +1,71 @@
+def sa(a):
+    if len(a)>=2:
+        f=0
+        f=a[0]
+        a[0]=a[1]
+        a[1]=f
+    return a
+
+def sb(b):
+    if len(b)>=2:
+        f=0
+        f=b[0]
+        b[0]=b[1]
+        b[1]=f
+    return b
+
+def ss(a, b):
+    return sa(a), sb(b)
+
+def ra(sp):
+    sp = sp[1:] + sp[:1]
+    return sp
+
+def rb(sp):
+    sp = sp[1:] + sp[:1]
+    return sp
+
+def rr(sp1,sp2):
+    sp1 = sp1[1:] + sp1[:1]
+    sp2 = sp2[1:] + sp2[:1]
+    return sp1, sp2
+
+def rra(sp):
+    sp = sp[-1:] + sp[:-1]
+    return sp
+
+def rrb(sp):
+    sp = sp[-1:] + sp[:-1]
+    return sp
+
+def rrr(sp1, sp2):
+    sp1 = rra(sp1)
+    sp2 = rrb(sp2)
+    return sp1, sp2
+
+def pa(sp1, sp2):
+    sp1.insert(0, sp2[0])
+    sp2 = sp2[1:]
+    return sp1, sp2
+
+def pb(sp1, sp2):
+    sp2.insert(0, sp1[0])
+    sp1 = sp1[1:]
+    return sp1, sp2
+
+def check_sortic(sp):
+    print
+    i = 0
+    sp1 = []
+    commands = []
+    kol = 0
+    while sp[i] != '!':
+        sp1.append(sp[i])
+        kol = kol + 1
+        i = i + 1
+    print(sp)
+    return sp1, sp[kol + 1:-1:]
+
+sp = [1, 2, 3, 4, 5, '!', sa, sb, rra, '*']
+c, p = check_sortic(sp)
+print(p)
