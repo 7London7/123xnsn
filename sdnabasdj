@@ -53,19 +53,28 @@ def pb(sp1, sp2):
     sp1 = sp1[1:]
     return sp1, sp2
 
-def check_sortic(sp):
-    print
-    i = 0
-    sp1 = []
-    commands = []
-    kol = 0
-    while sp[i] != '!':
-        sp1.append(sp[i])
-        kol = kol + 1
-        i = i + 1
-    print(sp)
-    return sp1, sp[kol + 1:-1:]
+commands = ['sa'== sa, 'sb'== sa, 'ss'== ss, 'pa'== pa, 'pb'== pb, 'ra'== ra, 'rb'== rb, 'rr'== rr, 'rra'== rra, 'rrb'== rrb,
+            'rrr'== rrr]
 
-sp = [1, 2, 3, 4, 5, '!', sa, sb, rra, '*']
-c, p = check_sortic(sp)
-print(p)
+def Check_sortic(sp):
+    a = []
+    b = []
+    com = []
+    i = 0
+    while sp[i] != '!':
+        a.insert(0, sp[i])
+        i = i + 1
+    a.reverse()
+    while sp[i + 1] != '*':
+        b.insert(0, sp[i + 1])
+        i = i + 1
+    b.reverse()
+    c = sorted(a)
+    c.reverse()
+    if a == c:
+        print("OK")
+    else:
+        print("KO")
+        
+sp = [2, 1, 3, 6, 5, 8, "!" , sa, pb, pb, pb, ra, rb, rra, rrb, sa, pa, pa, pa, "*"]
+print(Check_sortic(sp))
